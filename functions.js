@@ -35,12 +35,33 @@ const map = function (collection, iterator) {
   return result;
 };
 
-const filter = function (collection, callback) {};
+const filter = function (collection, callback) {
+  let result = [];
+
+  each(collection, function (value) {
+    if (callback(value)) {
+      result.push(value);
+    }
+  });
+  return result;
+};
 //reject([1, 2, 3, 4, 5, 6], isEven);
-const reject = function (collection, callbackTest) {};
+const reject = function (collection, callbackTest) {
+  return filter(collection, function (value) {
+    return !callbackTest(value);
+  });
+}; 
 
 //use indexOf to solve this
-const uniq = function (array) {};
+const uniq = function (array) {
+let result = [];
+each(array, function (element){
+  if(indexOf(result, element) === -1){
+    result.push(element);
+  }
+});
+  return result
+};
 
 const reduce = function (collection, iterator, accumulator) {};
 
